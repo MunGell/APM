@@ -1,0 +1,11 @@
+{
+    "ignore": [
+        
+       ".svn",
+       ".git",
+       "nbproject",
+       "codeigniter.php"
+       
+    ]
+
+}

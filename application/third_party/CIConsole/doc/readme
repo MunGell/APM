@@ -1,0 +1,88 @@
+CodeIgniter console
+
+REQUIREMENT
+-----------
+PHP 5 >= 5.2.1
+ZipArchive 
+PDO (extension=php_pdo.dll)
+
+CLI
+---
+Create file
+
+ci create application {applicationName}
+ci create controller [controllerName] {actionName1} {actionName2} ...
+ci create model [controllerName] {functionName1} {functionName2} ...
+ci create view [viewName1] {viewName2} {viewName3}
+ci create helper [helperName]
+
+Remove file
+
+ci remove controller [controllerName]
+ci remove model [controllerName]
+ci remove view [viewName]
+ci remove helper [helperName]
+
+Install bundle
+
+ci install tankauth-1.0.9
+ci install zend-1.11.10
+ci bundle install doctrine-2.0.7
+
+* Use /config/bundles.json
+* If we not have this file or we not have bundleName on this file use remote bundles file.
+
+Uninstall bundle
+
+ci uninstall tankauth-1.0.9
+ci uninstall zend-1.11.10
+ci bundle uninstall doctrine-2.0.7
+
+* For remove use /application/logs/tankauth-1.0.9.log and etc. local files
+
+List of all bundles
+
+ci bundle list
+ci list
+
+* Use or /config/bundles.json or remote bundle file. Not merge.
+
+Read info of bundle
+
+ci bundle readme zend-1.11.10
+ci readme zend-1.11.10
+
+Help
+
+ci help
+ci ?
+
+Deploy (experimental)
+
+ci deploy {profileName}
+ci deploy default
+ci deploy production
+
+* /config/deploy.json have profile name and FTP host, login, password and dir for upload.
+* /config/ignore.json ignoring files & folders at uploading.
+
+Generate file (experimental)
+
+ci generate table [tablename] {nameModelAndView} {nameController}
+ci generate table tbl_users (generate model & view tbl_users.php)
+ci generate table tbl_users Users (generate model & view users.php)
+ci generate table tbl_users Users Test (generate model & view users.php & controller test.php)
+
+QUICK EXAMPLE USE
+---
+cd /d C:\example\www
+ci create application
+ci create controller hello view edit delete
+ci create model hello view edit delete
+ci install hmvc
+ci uninstall hmvc
+ci install partial
+ci create view layouts\header layouts\footer main ci create view hello
+ci remove view welcome_message
+ci deploy
+

@@ -1,0 +1,20 @@
+{
+    "default": {
+        "host":       "127.0.0.1",
+        "login":      "default",
+        "password":   "default",
+        "dir":        "/www/test"
+    },
+    "development": {
+        "host":       "127.0.0.1",
+        "login":      "username",
+        "password":   "password",
+        "dir":        "/www/dev"
+    },
+    "production": {
+        "host":       "127.0.0.1",
+        "login":      "username",
+        "password":   "password",
+        "dir":        ""
+    }
+}

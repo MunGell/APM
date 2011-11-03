@@ -1,0 +1,86 @@
+{
+    "codeigniter-2.0.2": {
+        "url":       "http://bundle.org.ua/codeigniter-2.0.2",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/codeigniter-2.0.2/readme.txt.inc"
+    },
+    "codeigniter-2.0.3": {
+        "url":       "http://bundle.org.ua/codeigniter-2.0.3",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/codeigniter-2.0.3/readme.txt.inc"
+    },
+    "codeigniter-ibrahim": {
+        "url":       "http://bundle.org.ua/codeigniter-ibrahim",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/codeigniter-ibrahim/readme.txt.inc"
+    },
+    "tankauth-1.0.9": {
+        "url":       "http://bundle.org.ua/tankauth-1.0.9",
+        "install":   "http://bundle.org.ua/tankauth-1.0.9/install.php.inc",
+        "uninstall": "http://bundle.org.ua/tankauth-1.0.9/uninstall.php.inc",
+        "readme":    "http://bundle.org.ua/tankauth-1.0.9/readme.txt.inc"
+    },
+    "zend-1.11.10": {
+        "url":       "http://bundle.org.ua/zend-1.11.10",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/zend-1.11.10/readme.txt.inc"
+    },
+    "partial": {
+        "url":       "http://bundle.org.ua/partial",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/partial/readme.txt.inc"
+    },
+    "hmvc": {
+        "url":       "http://bundle.org.ua/hmvc",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/hmvc/readme.txt.inc"
+    },
+    "sitemap": {
+        "url":       "http://bundle.org.ua/sitemap",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/sitemap/readme.txt.inc"
+    },
+    "anchor_img": {
+        "url":       "http://bundle.org.ua/anchor_img",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/anchor_img/readme.txt.inc"
+    },
+    "langiden-0.29": {
+        "url":       "http://bundle.org.ua/langiden-0.29",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/langiden-0.29/readme.txt.inc"
+    },
+    "doctrine-1.2.4": {
+        "url":       "http://bundle.org.ua/doctrine-1.2.4",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/doctrine-1.2.4/readme.txt.inc"
+    },
+    "doctrine-2.0.7": {
+        "url":       "http://bundle.org.ua/doctrine-2.0.7",
+        "install":   "",
+        "uninstall": "",
+        "readme":    "http://bundle.org.ua/doctrine-2.0.7/readme.txt.inc"
+    },
+    "ci_sessions": {
+        "url":       "",
+        "install":   "http://bundle.org.ua/ci_sessions/install.php.inc",
+        "uninstall": "http://bundle.org.ua/ci_sessions/uninstall.php.inc",
+        "readme":    "http://bundle.org.ua/ci_sessions/readme.txt.inc"
+    },
+    "zacl": {
+        "url":       "http://bundle.org.ua/zacl",
+        "install":   "http://bundle.org.ua/zacl/install.php.inc",
+        "uninstall": "http://bundle.org.ua/zacl/uninstall.php.inc",
+        "readme":    "http://bundle.org.ua/zacl/readme.txt.inc"
+    }
+}

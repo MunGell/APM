@@ -1,0 +1,4 @@
+#!/usr/bin/env php
+<?php
+
+include('application/third_party/Doctrine/doctrine.php');
