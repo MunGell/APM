@@ -23,3 +23,5 @@ Compiled with:
 [Doctrine-CodeIgniter article](http://wildlyinaccurate.com/integrating-doctrine-2-with-codeigniter-2/) (changed)
 
 [CodeIgniter oAuth 2 Server](https://github.com/alexbilbie/CodeIgniter-OAuth-2.0-Server)
+
+[CodeIgniter MailChimp API 1.2](https://github.com/codepotato/codeigniter-mailchimp-api)
