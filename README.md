@@ -55,43 +55,57 @@ CI Console Documentation
 Generate files from templates
 ------------------------------
 
-php ci.php create application {applicationName}
-php ci.php create controller [controllerName] {actionName1} {actionName2}…
-php ci.php create model [controllerName] {functionName1} {functionName2}…
-php ci.php create view [viewName1] {viewName2} {viewName3}
-php ci.php create helper [helperName]
+	php ci.php create application {applicationName}
+
+	php ci.php create controller [controllerName] {actionName1} {actionName2}…
+
+	php ci.php create model [controllerName] {functionName1} {functionName2}…
+
+	php ci.php create view [viewName1] {viewName2} {viewName3}
+
+	php ci.php create helper [helperName]
 
 Remove files
 ------------
 
-php ci.php remove controller [controllerName]
-php ci.php remove model [controllerName]
-php ci.php remove view [viewName]
-php ci.php remove helper [helperName]
+	php ci.php remove controller [controllerName]
+
+	php ci.php remove model [controllerName]
+
+	php ci.php remove view [viewName]
+
+	php ci.php remove helper [helperName]
 
 Install bundles
 ----------------
 
-php ci.php install tankauth-1.0.9
-php ci.php install zend-1.11.10
-php ci.php bundle install hmvc
+	php ci.php install tankauth-1.0.9
+
+	php ci.php install zend-1.11.10
+
+	php ci.php bundle install hmvc
 
 Uninstall bundles
 -----------------
 
-php ci.php uninstall tankauth-1.0.9
-php ci.php uninstall zend-1.11.10
-php ci.php bundle uninstall hmvc
+	php ci.php uninstall tankauth-1.0.9
+
+	php ci.php uninstall zend-1.11.10
+
+	php ci.php bundle uninstall hmvc
 
 Bundles available
 -----------------
 
-php ci.php list
-php ci.php bundle list
+	php ci.php list
+
+	php ci.php bundle list
 
 Appendix
 --------
 
-php ci.php help / php ci.php? (read documentation)
-php readme hmvc (read a bundle readme)
-php bundle readme hmvc (read a bundle readme)
+	php ci.php help / php ci.php? (read documentation)
+
+	php readme hmvc (read a bundle readme)
+
+	php bundle readme hmvc (read a bundle readme)
