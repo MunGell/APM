@@ -31,9 +31,11 @@ DB Installation
 
 1. Create a DB in MySQL WorkBench
 2. Save it in .mwb format
-3. Execute: php [annotation|yml] path/to/file.mwb command
+3. Execute: 
+	php [annotation|yml] path/to/file.mwb command
 4. Unzip the archive and copy models to the models folder
-5. Execute: php doctrine orm:schema-tool:create
+5. Execute: 
+	php doctrine orm:schema-tool:create
 6. Done, DB installed
 
 Issues

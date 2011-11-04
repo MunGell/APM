@@ -32,7 +32,7 @@ class User extends CI_Controller {
 			$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|xss_clean');
 			if ($this->form_validation->run() != false)
 			{
-				
+				// Form input is alright
 			}
 			else
 			{
