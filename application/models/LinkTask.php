@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Link_tasks",indexes={@index(name="link_task_id_UNIQUE",columns={"link_task_id"})})
+ * @Table(name="Link_tasks")
  */
 class LinkTask
 {

@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Milestones",indexes={@index(name="mstone_id_UNIQUE",columns={"mstone_id"})})
+ * @Table(name="Milestones")
  */
 class Milestone
 {

@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Task_lists",indexes={@index(name="tlists_id_UNIQUE",columns={"tlists_id"})})
+ * @Table(name="Task_lists")
  */
 class TaskList
 {

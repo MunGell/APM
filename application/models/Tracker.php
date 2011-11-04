@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Trackers",indexes={@index(name="track_id_UNIQUE",columns={"track_id"})})
+ * @Table(name="Trackers")
  */
 class Tracker
 {

@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Users",indexes={@index(name="user_id_UNIQUE",columns={"user_id"})})
+ * @Table(name="Users")
  */
 class User
 {
@@ -39,21 +39,21 @@ class User
      */
     private $user_type;
 
-	/** 
+    /** 
      * 
      * @Column(type="boolean")
      */
     private $user_active;
 
-	/** 
+    /** 
      * 
      * @Column(type="datetime")
      */
     private $user_created_at;
 
-	/** 
+    /** 
      * 
-     * @Column(type="datetime", nullable=true)
+     * @Column(type="datetime")
      */
     private $user_last_login;
 
@@ -61,7 +61,7 @@ class User
      * 
      * @Column(type="string",length=100)
      */
-    private $user_activate_key;
+    private $user_activation_key;
 
 
     public function __construct()
@@ -92,15 +92,15 @@ class User
         return $this->user_name;
     }
 
-    public function getUserEmail()
-    {
-        return $this->user_email;
-    }
-
     public function setUserEmail($user_email)
     {
         $this->user_email = $user_email;
         return $this; // fluent interface
+    }
+
+    public function getUserEmail()
+    {
+        return $this->user_email;
     }
 
     public function setUserPass($user_pass)
@@ -158,15 +158,15 @@ class User
         return $this->user_last_login;
     }
 
-    public function setUserActivateKey($user_activate_key)
+    public function setUserActivationKey($user_activation_key)
     {
-        $this->user_activate_key = $user_activate_key;
+        $this->user_activation_key = $user_activation_key;
         return $this; // fluent interface
     }
 
-    public function getUserActivateKey()
+    public function getUserActivationKey()
     {
-        return $this->user_activate_key;
+        return $this->user_activation_key;
     }
 
 

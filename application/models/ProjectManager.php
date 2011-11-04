@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Project_managers",indexes={@index(name="pmanager_id_UNIQUE",columns={"pmanager_id"})})
+ * @Table(name="Project_managers")
  */
 class ProjectManager
 {

@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Link_user_types_priveleges",indexes={@index(name="link_ut_p_id_UNIQUE",columns={"link_ut_p_id"})})
+ * @Table(name="Link_user_types_priveleges")
  */
 class LinkUserTypesPrivelege
 {

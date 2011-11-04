@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Privileges",indexes={@index(name="privelege_id_UNIQUE",columns={"privilege_id"})})
+ * @Table(name="Privileges")
  */
 class Privilege
 {

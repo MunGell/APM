@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Tasks",indexes={@index(name="task_id_UNIQUE",columns={"task_id"})})
+ * @Table(name="Tasks")
  */
 class Task
 {
@@ -57,7 +57,7 @@ class Task
      */
     private $task_deadline;
 
-	/** 
+    /** 
      * 
      * @Column(type="integer",nullable=true)
      */
@@ -185,5 +185,6 @@ class Task
     {
         return $this->task_finish;
     }
+
 
 }

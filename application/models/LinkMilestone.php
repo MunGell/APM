@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Link_milestones",indexes={@index(name="Link_milestones_UNIQUE",columns={"link_mstone_id"})})
+ * @Table(name="Link_milestones")
  */
 class LinkMilestone
 {

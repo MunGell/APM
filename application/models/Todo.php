@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="Todos",indexes={@index(name="todo_id_UNIQUE",columns={"todo_id"})})
+ * @Table(name="Todos")
  */
 class Todo
 {

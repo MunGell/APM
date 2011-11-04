@@ -4,7 +4,7 @@ namespace models;
 
 /**
  * @Entity
- * @Table(name="User_types",indexes={@index(name="utype_id_UNIQUE",columns={"utype_id"})})
+ * @Table(name="User_types")
  */
 class UserType
 {
