@@ -27,7 +27,7 @@ namespace MwbExporter\Core\Model;
 
 abstract class Column extends Base
 {
-    protected $config = array();
+    public $config = array();
     protected $link   = array();
     protected $isPrimary = false;
     protected $isUnique  = false;

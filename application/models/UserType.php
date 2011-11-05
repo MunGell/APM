@@ -51,4 +51,18 @@ class UserType
     }
 
 
+    public function setArray($array)
+    {
+        $this->utype_id = $array['utype_id'];
+        $this->utype_title = $array['utype_title'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'utype_id' => $this->utype_id,
+            'utype_title' => $this->utype_title
+        );
+    }
 }

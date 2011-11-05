@@ -1,0 +1,2 @@
+1. |DONE| Add getArrayResults() function in the models
+2. |DONE| Support of tinyint -> boolean transaction

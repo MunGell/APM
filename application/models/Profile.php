@@ -51,4 +51,18 @@ class Profile
     }
 
 
+    public function setArray($array)
+    {
+        $this->profile_id = $array['profile_id'];
+        $this->user_id = $array['user_id'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'profile_id' => $this->profile_id,
+            'user_id' => $this->user_id
+        );
+    }
 }

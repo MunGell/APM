@@ -119,4 +119,26 @@ class Tracker
     }
 
 
+    public function setArray($array)
+    {
+        $this->track_id = $array['track_id'];
+        $this->track_description = $array['track_description'];
+        $this->track_start = $array['track_start'];
+        $this->track_end = $array['track_end'];
+        $this->user_id = $array['user_id'];
+        $this->task_id = $array['task_id'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'track_id' => $this->track_id,
+            'track_description' => $this->track_description,
+            'track_start' => $this->track_start,
+            'track_end' => $this->track_end,
+            'user_id' => $this->user_id,
+            'task_id' => $this->task_id
+        );
+    }
 }

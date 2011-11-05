@@ -102,4 +102,24 @@ class TaskList
     }
 
 
+    public function setArray($array)
+    {
+        $this->tlists_id = $array['tlists_id'];
+        $this->tlist_title = $array['tlist_title'];
+        $this->tlist_description = $array['tlist_description'];
+        $this->project_id = $array['project_id'];
+        $this->mstone_id = $array['mstone_id'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'tlists_id' => $this->tlists_id,
+            'tlist_title' => $this->tlist_title,
+            'tlist_description' => $this->tlist_description,
+            'project_id' => $this->project_id,
+            'mstone_id' => $this->mstone_id
+        );
+    }
 }

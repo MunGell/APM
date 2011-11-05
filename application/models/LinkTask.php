@@ -68,4 +68,20 @@ class LinkTask
     }
 
 
+    public function setArray($array)
+    {
+        $this->link_task_id = $array['link_task_id'];
+        $this->task_source = $array['task_source'];
+        $this->task_target = $array['task_target'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'link_task_id' => $this->link_task_id,
+            'task_source' => $this->task_source,
+            'task_target' => $this->task_target
+        );
+    }
 }

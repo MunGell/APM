@@ -136,4 +136,28 @@ class Project
     }
 
 
+    public function setArray($array)
+    {
+        $this->project_id = $array['project_id'];
+        $this->project_title = $array['project_title'];
+        $this->project_description = $array['project_description'];
+        $this->project_start = $array['project_start'];
+        $this->project_deadline = $array['project_deadline'];
+        $this->project_budget = $array['project_budget'];
+        $this->project_finish = $array['project_finish'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'project_id' => $this->project_id,
+            'project_title' => $this->project_title,
+            'project_description' => $this->project_description,
+            'project_start' => $this->project_start,
+            'project_deadline' => $this->project_deadline,
+            'project_budget' => $this->project_budget,
+            'project_finish' => $this->project_finish
+        );
+    }
 }

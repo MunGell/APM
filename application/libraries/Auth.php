@@ -16,7 +16,7 @@ class Auth {
 		$this->db = $this->ci->doctrine->em;
 	}
 	
-	function createUser($username, $email, $password, $type)
+	function createUser($username, $email, $password, $type = '0')
 	{
 		if($this->isUsernameAvailable($username) && $this->isEmailAvailable($email))
 		{
@@ -28,7 +28,7 @@ class Auth {
 				$user->setUserPass($pass);
 				$user->setUserCreatedAt(date("Y-m-d H:i:s"));
 				$user->setUserActive('0');
-				$user->setUserActivateKey(do_hash($username.rand().microtime()));
+				$user->setUserActivationKey(do_hash($username.rand().microtime()));
 				$this->db->persist($user);
 				$this->db->flush();
 				return true;
@@ -47,12 +47,7 @@ class Auth {
 	
 	function deleteUser($user_id)
 	{
-		/*$query = $this->db->createQueryBuilder();
-		$query = $query->delete('models\User', 'u')
-			  		   ->where('u.user_id = ?1')
-			  		   ->setParameters(array(1 => $user_id))
-			  		   ->getQuery();
-		return $query->getResult();*/
+		// ToDo: check current user for permission
 		$user = $this->db->find('models\User', $id);
 		$this->db->remove($user);
 		$this->db->flush();
@@ -120,6 +115,20 @@ class Auth {
 		}
 	}
 	
+	function getAllData()
+	{
+		if($this->isLoggedIn())
+		{
+			$id = $this->getUserId();
+			$user = $this->db->find('models\User', 1);
+			return $user->getArray();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 	function isUsernameAvailable($username)
 	{
 		if($username)
@@ -177,7 +186,7 @@ class Auth {
 		if($activation_key)
 		{
 			$user = $this->db->find('models\User', $user_id);
-			if($user->getUserActive() == 0 && ($user->getUserActivateKey() == $activation_key))
+			if($user->getUserActive() == 0 && ($user->getUserActivationKey() == $activation_key))
 			{
 				$user->setUserActive(1);
 				$user->flush();

@@ -66,4 +66,39 @@ class Columns extends \MwbExporter\Core\Model\Columns
         
         return implode("\n", $return);
     }
+
+	public function displayArrayGetterAndSetter()
+    {
+        $return = array();
+		
+		// Setter
+		$return[] = $this->indentation() . 'public function setArray($array)';
+		$return[] = $this->indentation() . '{';
+		foreach($this->columns as $column)
+		{
+			$return[] = $this->indentation(2) . '$this->' . $column->config['name'] . ' = $array[\'' . $column->config['name'] . '\'];';
+		}
+		$return[] = $this->indentation(2) . 'return $this; // fluent interface';
+		$return[] = $this->indentation() . '}';
+		$return[] = '';
+		// Getter
+		$return[] = $this->indentation() . 'public function getArray()';
+		$return[] = $this->indentation() . '{';
+		$return[] = $this->indentation(2) . 'return array(';
+		foreach($this->columns as $column)
+		{
+			if ($column == end($this->columns)) 
+			{
+				$return[] = $this->indentation(3) . "'" . $column->config['name'] . "'" . ' => $this->' . $column->config['name'];
+			}
+			else
+			{
+				$return[] = $this->indentation(3) . "'" . $column->config['name'] . "'" . ' => $this->' . $column->config['name'] . ",";
+			}
+		}
+		$return[] = $this->indentation(2) . ');';
+		$return[] = $this->indentation() . '}';
+		
+		return implode("\n", $return);
+	}
 }

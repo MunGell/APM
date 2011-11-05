@@ -187,4 +187,34 @@ class Task
     }
 
 
+    public function setArray($array)
+    {
+        $this->task_id = $array['task_id'];
+        $this->task_title = $array['task_title'];
+        $this->task_description = $array['task_description'];
+        $this->tlist_id = $array['tlist_id'];
+        $this->task_user_source = $array['task_user_source'];
+        $this->task_user_target = $array['task_user_target'];
+        $this->task_start = $array['task_start'];
+        $this->task_deadline = $array['task_deadline'];
+        $this->task_priority = $array['task_priority'];
+        $this->task_finish = $array['task_finish'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'task_id' => $this->task_id,
+            'task_title' => $this->task_title,
+            'task_description' => $this->task_description,
+            'tlist_id' => $this->tlist_id,
+            'task_user_source' => $this->task_user_source,
+            'task_user_target' => $this->task_user_target,
+            'task_start' => $this->task_start,
+            'task_deadline' => $this->task_deadline,
+            'task_priority' => $this->task_priority,
+            'task_finish' => $this->task_finish
+        );
+    }
 }

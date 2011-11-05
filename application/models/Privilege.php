@@ -51,4 +51,18 @@ class Privilege
     }
 
 
+    public function setArray($array)
+    {
+        $this->privilege_id = $array['privilege_id'];
+        $this->privilege_title = $array['privilege_title'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'privilege_id' => $this->privilege_id,
+            'privilege_title' => $this->privilege_title
+        );
+    }
 }

@@ -101,4 +101,24 @@ class Session
     }
 
 
+    public function setArray($array)
+    {
+        $this->session_id = $array['session_id'];
+        $this->ip_address = $array['ip_address'];
+        $this->user_agent = $array['user_agent'];
+        $this->last_activity = $array['last_activity'];
+        $this->user_data = $array['user_data'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'session_id' => $this->session_id,
+            'ip_address' => $this->ip_address,
+            'user_agent' => $this->user_agent,
+            'last_activity' => $this->last_activity,
+            'user_data' => $this->user_data
+        );
+    }
 }

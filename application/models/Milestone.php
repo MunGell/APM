@@ -136,4 +136,28 @@ class Milestone
     }
 
 
+    public function setArray($array)
+    {
+        $this->mstone_id = $array['mstone_id'];
+        $this->mstone_title = $array['mstone_title'];
+        $this->mstone_description = $array['mstone_description'];
+        $this->project_id = $array['project_id'];
+        $this->mstone_start = $array['mstone_start'];
+        $this->mstone_deadline = $array['mstone_deadline'];
+        $this->mstone_finish = $array['mstone_finish'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'mstone_id' => $this->mstone_id,
+            'mstone_title' => $this->mstone_title,
+            'mstone_description' => $this->mstone_description,
+            'project_id' => $this->project_id,
+            'mstone_start' => $this->mstone_start,
+            'mstone_deadline' => $this->mstone_deadline,
+            'mstone_finish' => $this->mstone_finish
+        );
+    }
 }

@@ -68,4 +68,20 @@ class LinkUserTypesPrivelege
     }
 
 
+    public function setArray($array)
+    {
+        $this->link_ut_p_id = $array['link_ut_p_id'];
+        $this->utype_id = $array['utype_id'];
+        $this->privilege_id = $array['privilege_id'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'link_ut_p_id' => $this->link_ut_p_id,
+            'utype_id' => $this->utype_id,
+            'privilege_id' => $this->privilege_id
+        );
+    }
 }

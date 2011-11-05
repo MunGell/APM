@@ -153,4 +153,30 @@ class Todo
     }
 
 
+    public function setArray($array)
+    {
+        $this->todo_id = $array['todo_id'];
+        $this->todo_title = $array['todo_title'];
+        $this->todo_description = $array['todo_description'];
+        $this->user_id = $array['user_id'];
+        $this->project_id = $array['project_id'];
+        $this->todo_start = $array['todo_start'];
+        $this->todo_deadline = $array['todo_deadline'];
+        $this->todo_alert = $array['todo_alert'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'todo_id' => $this->todo_id,
+            'todo_title' => $this->todo_title,
+            'todo_description' => $this->todo_description,
+            'user_id' => $this->user_id,
+            'project_id' => $this->project_id,
+            'todo_start' => $this->todo_start,
+            'todo_deadline' => $this->todo_deadline,
+            'todo_alert' => $this->todo_alert
+        );
+    }
 }

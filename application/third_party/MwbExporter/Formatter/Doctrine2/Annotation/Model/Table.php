@@ -122,6 +122,8 @@ class Table extends \MwbExporter\Core\Model\Table
         $return[] = $this->columns->displayGetterAndSetter();
         $return[] = $this->displayManyToManyGetterAndSetter();
 
+		$return[] = $this->columns->displayArrayGetterAndSetter();
+
         $return[] = '}';
         $return[] = '';
         return implode("\n", $return);
@@ -240,4 +242,6 @@ class Table extends \MwbExporter\Core\Model\Table
 
         return false;
     }
+
+
 }

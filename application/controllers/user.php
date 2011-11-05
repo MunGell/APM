@@ -30,9 +30,21 @@ class User extends CI_Controller {
 			// This request comes from the form
 			$this->form_validation->set_rules('username', 'Username', 'trim|required|max_length[50]|xss_clean');
 			$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|xss_clean');
+			$this->form_validation->set_rules('password', 'Password', 'required|xss_clean');
 			if ($this->form_validation->run() != false)
 			{
 				// Form input is alright
+				$username	= $this->input->post('username');
+				$email		= $this->input->post('email');
+				$password	= $this->input->post('password');
+				if($this->auth->createUser($username, $email, $password))
+				{
+					// Registration successful
+				}
+				else
+				{
+					// An error occured during registration process
+				}
 			}
 			else
 			{
@@ -43,8 +55,6 @@ class User extends CI_Controller {
 		{
 			// This request should show the registration form
 		}
-		
-		//$this->auth->create('admin', 'munhell@gmail.com', '111');
     }
         
     /**
@@ -52,15 +62,16 @@ class User extends CI_Controller {
      */
     public function delete()
     {
-
+		$this->auth->deleteUser($this->input->post('id'));
+		// Show ondeletion message
     }
         
     /**
-     * Edit used data
+     * Edit user data
      */
     public function edit()
     {
-		
+		//var_dump($this->auth->getAllData());
     }
 
 	/**
@@ -68,6 +79,7 @@ class User extends CI_Controller {
 	 */
 	public function login()
 	{
+		// ToDo: change to POST data
 		$user_name = $this->input->get('login');
 		$user_pass = do_hash($this->input->get('password'), 'md5');
 		if($user_name)
@@ -84,13 +96,13 @@ class User extends CI_Controller {
 		$this->auth->logout();
 	}
     
-	function changePassword($user_id, $password, $new_password)
+	public function changePassword($user_id, $password, $new_password)
 	{
 		
 		
 	}
 	
-	function changeEmail($user_id, $email)
+	public function changeEmail($user_id, $email)
 	{
 		
 	}

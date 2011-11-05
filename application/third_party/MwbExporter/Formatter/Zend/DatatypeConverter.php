@@ -9,6 +9,7 @@ class DatatypeConverter extends \MwbExporter\Core\DatatypeConverter
         self::$datatypes = array(
             // simple datatypes
             //'com.mysql.rdbms.mysql.datatype.tinyint'            => 'integer(1)',
+			'com.mysql.rdbms.mysql.datatype.tinyint'            => 'boolean', // Edited
             //'com.mysql.rdbms.mysql.datatype.smallint'           => 'integer(2)',
             //'com.mysql.rdbms.mysql.datatype.mediumint'          => 'integer(3)',
             //'com.mysql.rdbms.mysql.datatype.int'                => 'integer(4)',
@@ -64,7 +65,7 @@ class DatatypeConverter extends \MwbExporter\Core\DatatypeConverter
             'com.mysql.rdbms.mysql.userdatatype.dec'            => 'decimal',
             'com.mysql.rdbms.mysql.userdatatype.character'      => 'char'
         );
-        self::$datatypes['com.mysql.rdbms.mysql.datatype.tinyint']   = 'tinyint';
+        self::$datatypes['com.mysql.rdbms.mysql.datatype.tinyint']   = 'boolean'; // Edited
         self::$datatypes['com.mysql.rdbms.mysql.datatype.smallint']  = 'smallint';
         self::$datatypes['com.mysql.rdbms.mysql.datatype.mediumint'] = 'mediumint';
         self::$datatypes['com.mysql.rdbms.mysql.datatype.int']       = 'integer';

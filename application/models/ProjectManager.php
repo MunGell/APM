@@ -85,4 +85,22 @@ class ProjectManager
     }
 
 
+    public function setArray($array)
+    {
+        $this->pmanager_id = $array['pmanager_id'];
+        $this->user_id = $array['user_id'];
+        $this->project_id = $array['project_id'];
+        $this->pmanager_leader = $array['pmanager_leader'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'pmanager_id' => $this->pmanager_id,
+            'user_id' => $this->user_id,
+            'project_id' => $this->project_id,
+            'pmanager_leader' => $this->pmanager_leader
+        );
+    }
 }

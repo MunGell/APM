@@ -170,4 +170,32 @@ class User
     }
 
 
+    public function setArray($array)
+    {
+        $this->user_id = $array['user_id'];
+        $this->user_name = $array['user_name'];
+        $this->user_email = $array['user_email'];
+        $this->user_pass = $array['user_pass'];
+        $this->user_type = $array['user_type'];
+        $this->user_active = $array['user_active'];
+        $this->user_created_at = $array['user_created_at'];
+        $this->user_last_login = $array['user_last_login'];
+        $this->user_activation_key = $array['user_activation_key'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'user_id' => $this->user_id,
+            'user_name' => $this->user_name,
+            'user_email' => $this->user_email,
+            'user_pass' => $this->user_pass,
+            'user_type' => $this->user_type,
+            'user_active' => $this->user_active,
+            'user_created_at' => $this->user_created_at,
+            'user_last_login' => $this->user_last_login,
+            'user_activation_key' => $this->user_activation_key
+        );
+    }
 }

@@ -68,4 +68,20 @@ class LinkMilestone
     }
 
 
+    public function setArray($array)
+    {
+        $this->link_mstone_id = $array['link_mstone_id'];
+        $this->mstone_source = $array['mstone_source'];
+        $this->mstone_target = $array['mstone_target'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'link_mstone_id' => $this->link_mstone_id,
+            'mstone_source' => $this->mstone_source,
+            'mstone_target' => $this->mstone_target
+        );
+    }
 }

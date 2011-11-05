@@ -33,4 +33,16 @@ class Company
     }
 
 
+    public function setArray($array)
+    {
+        $this->idCompanies = $array['idCompanies'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'idCompanies' => $this->idCompanies
+        );
+    }
 }

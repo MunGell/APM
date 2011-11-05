@@ -33,4 +33,16 @@ class File
     }
 
 
+    public function setArray($array)
+    {
+        $this->idFiles = $array['idFiles'];
+        return $this; // fluent interface
+    }
+
+    public function getArray()
+    {
+        return array(
+            'idFiles' => $this->idFiles
+        );
+    }
 }
