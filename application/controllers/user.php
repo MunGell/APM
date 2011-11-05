@@ -18,7 +18,7 @@ class User extends CI_Controller {
 	
     
     /**
-     *
+     * Current user profile page
      */
     public function index()
     {
@@ -30,7 +30,7 @@ class User extends CI_Controller {
     }
         
     /**
-     * Register new user
+     * Register a new user
      */
     public function register()
     {
@@ -95,6 +95,7 @@ class User extends CI_Controller {
      */
     public function delete()
     {
+		// ToDo;
 		$this->auth->deleteUser($this->input->post('id'));
 		// Show ondeletion message
     }
@@ -108,7 +109,7 @@ class User extends CI_Controller {
     }
 
 	/**
-	 * The Login function
+	 * A user login 
 	 */
 	public function login()
 	{
@@ -176,17 +177,26 @@ class User extends CI_Controller {
 		redirect('/', 'location');
 	}
     
+	/**
+	 * Change user password
+	 */
 	public function changePassword($user_id, $password, $new_password)
 	{
-		
-		
+		// ToDo;
 	}
 	
+	/**
+	 * Change user email
+	 */
 	public function changeEmail($user_id, $email)
 	{
-		
+		// ToDo;
+		// ToDo: deactivate user when email changed
 	}
 	
+	/**
+	 * Internal translation function
+	 */
 	private function _translation($line, $values = array())
 	{
 		if($count = count($values) > 0)

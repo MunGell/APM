@@ -10,7 +10,11 @@ class Auth {
 	private $ci;
 	private $db;
 	
-	function __construct()
+	/**
+	 * Class constructor
+	 * @return void
+	 */
+	public function __construct()
     {
 		$this->ci =& get_instance();
 		$this->db = $this->ci->doctrine->em;
@@ -20,7 +24,15 @@ class Auth {
 		}
 	}
 	
-	function createUser($username, $email, $password, $type = '0')
+	/**
+	 * Create a user in database
+	 * @param string username
+	 * @param string email
+	 * @param string password
+	 * @param int type
+	 * @return boolean | error message
+	 */
+	public function createUser($username, $email, $password, $type = '0')
 	{
 		// ToDo: send an email
 		if($this->isUsernameAvailable($username))
@@ -33,7 +45,7 @@ class Auth {
 					$user->setUsername($username);
 					$user->setUserEmail($email);
 					$user->setUserPass($password);
-					$user->setUserType('0');
+					$user->setUserType($type);
 					$user->setUserCreatedAt(new DateTime());
 					$user->setUserLastLogin(new DateTime());
 					$user->setUserActive('0');
@@ -58,7 +70,12 @@ class Auth {
 		}
 	}
 	
-	function deleteUser($user_id)
+	/**
+	 * Delete a user from the database
+	 * @param int user ID
+	 * @return void
+	 */
+	public function deleteUser($user_id)
 	{
 		// ToDo: check current user for permission
 		$user = $this->db->find('models\User', $id);
@@ -66,7 +83,14 @@ class Auth {
 		$this->db->flush();
 	}
 	
-	function login($username, $password, $remember)
+	/**
+	 * User login
+	 * @param string username
+	 * @param string password
+	 * @param boolean remeber the user or not
+	 * @return boolean | error message
+	 */
+	public function login($username, $password, $remember)
 	{
 		$result = 0;
 		if($username && $password)
@@ -99,13 +123,21 @@ class Auth {
 		}
 	}
 	
-	function logout()
+	/**
+	 * Destroy user session
+	 * @return void
+	 */
+	public function logout()
 	{
 		$this->ci->input->set_cookie();
 		$this->ci->session->sess_destroy();
 	}
 	
-	function isLoggedIn()
+	/**
+	 * Check if user is already logged in
+	 * @return boolean
+	 */
+	public function isLoggedIn()
 	{
 		if($this->ci->session->userdata('user_id'))
 		{
@@ -114,7 +146,11 @@ class Auth {
 			return false;
 	}
 	
-	function getUserId()
+	/**
+	 * Gets current user ID
+	 * @return int ID
+	 */
+	public function getUserId()
 	{
 		if($this->isLoggedIn())
 		{
@@ -126,7 +162,11 @@ class Auth {
 		}
 	}
 	
-	function getUsername()
+	/**
+	 * Gets current user name
+	 * @return string username
+	 */
+	public function getUsername()
 	{
 		if($this->isLoggedIn())
 		{
@@ -140,7 +180,11 @@ class Auth {
 		}
 	}
 	
-	function getAllData()
+	/**
+	 * Gets all user data in array
+	 * @return array of user information
+	 */
+	public function getAllData()
 	{
 		if($this->isLoggedIn())
 		{
@@ -154,7 +198,12 @@ class Auth {
 		}
 	}
 	
-	function isUsernameAvailable($username)
+	/**
+	 * Checks is username is available in the database
+	 * @param string username
+	 * @return boolean
+	 */
+	public function isUsernameAvailable($username)
 	{
 		if($username)
 		{
@@ -180,7 +229,12 @@ class Auth {
 		}
 	}
 	
-	function isEmailAvailable($email)
+	/**
+	 * Checks is email is available in the database
+	 * @param string email
+	 * @return boolean
+	 */
+	public function isEmailAvailable($email)
 	{
 		if($email)
 		{
@@ -206,7 +260,13 @@ class Auth {
 		}
 	}
 	
-	function activateUser($user_id, $activation_key)
+	/**
+	 * Activates user in the database
+	 * @param int user ID
+	 * @param string activation key
+	 * @return boolean
+	 */
+	public function activateUser($user_id, $activation_key)
 	{
 		if($activation_key)
 		{
@@ -228,16 +288,19 @@ class Auth {
 		}
 	}
 	
-	function forgotPassword($username)
+	public function forgotPassword($username)
 	{
 		// ToDo;
 	}
 	
-	function resetPassword($user_id, $password, $new_password)
+	public function resetPassword($user_id, $password, $new_password)
 	{
 		// ToDo;
 	}
 	
+	/**
+	 * Internal translation function
+	 */
 	private function _translation($line, $values = array())
 	{
 		if($count = count($values) > 0)
