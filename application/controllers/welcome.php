@@ -22,17 +22,6 @@ class Welcome extends CI_Controller {
 	{
 		echo $this->twig->render('welcome_message.html', array('elapsed_time' => '123'));
 	}
-	
-	public function test()
-	{
-		$user = new models\Users;
-		$user->setUsername('Joseph');
-		$user->setPassword('secretPassw0rd');
-		$user->setGroup(2);
-
-		$this->doctrine->em->persist($user);
-		$this->doctrine->em->flush();
-	}
 }
 
 /* End of file welcome.php */

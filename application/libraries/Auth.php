@@ -71,6 +71,11 @@ class Auth {
 		{
 			$this->ci->session->set_userdata('user_id', $result[0]->getUserId());
 			$this->ci->input->set_cookie('remember', $remember);
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 	

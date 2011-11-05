@@ -8,7 +8,8 @@ class User extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-		$this->load->library('auth', 'form_validation');
+		$this->load->library('form_validation');
+		$this->load->helper('url');
     }
 	
     
@@ -17,6 +18,10 @@ class User extends CI_Controller {
      */
     public function index()
     {
+		if(!$this->auth->isLoggedIn())
+		{
+			redirect('/user/login', 'location');
+		}
 		echo $this->auth->getUsername();
     }
         
@@ -30,7 +35,7 @@ class User extends CI_Controller {
 			// This request comes from the form
 			$this->form_validation->set_rules('username', 'Username', 'trim|required|max_length[50]|xss_clean');
 			$this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email|xss_clean');
-			$this->form_validation->set_rules('password', 'Password', 'required|xss_clean');
+			$this->form_validation->set_rules('password', 'Password', 'required|matches[password_confirmation]|xss_clean');
 			if ($this->form_validation->run() != false)
 			{
 				// Form input is alright
@@ -80,11 +85,50 @@ class User extends CI_Controller {
 	public function login()
 	{
 		// ToDo: change to POST data
-		$user_name = $this->input->get('login');
-		$user_pass = do_hash($this->input->get('password'), 'md5');
-		if($user_name)
+		if($this->auth->isLoggedIn())
 		{
-			$this->auth->login($user_name, $user_pass, true);
+			redirect('/user', 'location');
+		}
+		if($this->input->post('login'))
+		{
+			// Process the login data
+			$this->form_validation->set_rules('login', 'Login', 'trim|required|max_length[50]|xss_clean');
+			$this->form_validation->set_rules('password', 'Password', 'required|xss_clean');
+			if ($this->form_validation->run() != false)
+			{
+				$user_name = $this->input->post('login');
+				$user_pass = do_hash($this->input->post('password'), 'md5');
+				if($user_name)
+				{
+					if($this->auth->login($user_name, $user_pass, true))
+					{
+						redirect('/', 'location');
+					}
+					else
+					{
+						// Show error page
+					}
+				}
+			}
+			else
+			{
+				// Show an error about incorrect form input
+				echo $this->twig->render('login_form.html', array(
+					'title'			=> 'Login form',
+					'csrf_variable' => $this->security->get_csrf_token_name(),
+					'csrf_value'	=> $this->security->get_csrf_hash(),
+					'error'			=> validation_errors()
+					));
+			}
+		}
+		else
+		{
+			// Show the login form
+			echo $this->twig->render('login_form.html', array(
+				'title' => 'Login form',
+				'csrf_variable'	=> $this->security->get_csrf_token_name(),
+				'csrf_value'	=> $this->security->get_csrf_hash()
+				));
 		}
 	}
 	
@@ -94,6 +138,7 @@ class User extends CI_Controller {
 	public function logout()
 	{
 		$this->auth->logout();
+		redirect('/', 'location');
 	}
     
 	public function changePassword($user_id, $password, $new_password)

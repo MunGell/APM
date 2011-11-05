@@ -22,8 +22,6 @@ Compiled with:
 
 [Doctrine-CodeIgniter article](http://wildlyinaccurate.com/integrating-doctrine-2-with-codeigniter-2/) (changed)
 
-[CodeIgniter oAuth 2 Server](https://github.com/alexbilbie/CodeIgniter-OAuth-2.0-Server)
-
 [CodeIgniter MailChimp API 1.2](https://github.com/codepotato/codeigniter-mailchimp-api)
 
 DB Installation
@@ -45,7 +43,7 @@ DB Installation
 Issues
 ===========
 
-1. Doctrine do not know tinyint field type. Commonly it is boolean, so change tinyint type to boolean in each file.
+1. |SOLVED| Doctrine do not know tinyint field type. Commonly it is boolean, so change tinyint type to boolean in each file.
 
 Useful
 ===========
@@ -115,3 +113,8 @@ Appendix
 	php readme hmvc (read a bundle readme)
 
 	php bundle readme hmvc (read a bundle readme)
+
+Changes in CodeIgniter Core
+============================
+
+1. Form_validation, tag <p> removed
