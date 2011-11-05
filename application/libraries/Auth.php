@@ -14,34 +14,47 @@ class Auth {
     {
 		$this->ci =& get_instance();
 		$this->db = $this->ci->doctrine->em;
+		if (!in_array('auth_lang.php', $this->ci->lang->is_loaded, TRUE))
+		{
+			$this->ci->lang->load('auth');
+		}
 	}
 	
 	function createUser($username, $email, $password, $type = '0')
 	{
-		if($this->isUsernameAvailable($username) && $this->isEmailAvailable($email))
+		// ToDo: send an email
+		if($this->isUsernameAvailable($username))
 		{
-			try
+			if($this->isEmailAvailable($email))
 			{
-				$user = new models\User;
-				$user->setUsername($username);
-				$user->setUserEmail($email);
-				$user->setUserPass($pass);
-				$user->setUserCreatedAt(date("Y-m-d H:i:s"));
-				$user->setUserActive('0');
-				$user->setUserActivationKey(do_hash($username.rand().microtime()));
-				$this->db->persist($user);
-				$this->db->flush();
-				return true;
+				try
+				{
+					$user = new models\User;
+					$user->setUsername($username);
+					$user->setUserEmail($email);
+					$user->setUserPass($password);
+					$user->setUserType('0');
+					$user->setUserCreatedAt(new DateTime());
+					$user->setUserLastLogin(new DateTime());
+					$user->setUserActive('0');
+					$user->setUserActivationKey(do_hash($username.rand().microtime()));
+					$this->db->persist($user);
+					$this->db->flush();
+					return true;
+				}
+				catch(ErrorException $e)
+				{
+					return $e->getMessage();
+				}
 			}
-			catch(ErrorException $e)
+			else
 			{
-				show_error($e->getMessage());
-				return false;
+				return $this->_translation('email_already_exists');
 			}
 		}
 		else
 		{
-			return false;
+			return $this->_translation('username_already_exists');
 		}
 	}
 	
@@ -69,13 +82,20 @@ class Auth {
 		}
 		if(count($result) === 1)
 		{
-			$this->ci->session->set_userdata('user_id', $result[0]->getUserId());
-			$this->ci->input->set_cookie('remember', $remember);
-			return true;
+			if($result[0]->getUserActive())
+			{
+				$this->ci->session->set_userdata('user_id', $result[0]->getUserId());
+				$this->ci->input->set_cookie('remember', $remember);
+				return true;
+			}
+			else
+			{
+				return $this->_translation('activation_needed');
+			}
 		}
 		else
 		{
-			return false;
+			return $this->_translation('no_user');
 		}
 	}
 	
@@ -145,7 +165,7 @@ class Auth {
 							->setParameters(array(1 => $username))
 							->getQuery();
 			$result = $query->getSingleScalarResult();
-			if($result === 0)
+			if($result == 0)
 			{
 				return true;
 			}
@@ -171,7 +191,7 @@ class Auth {
 							->setParameters(array(1 => $email))
 							->getQuery();
 			$result = $query->getSingleScalarResult();
-			if($result === 0)
+			if($result == 0)
 			{
 				return true;
 			}
@@ -216,5 +236,22 @@ class Auth {
 	function resetPassword($user_id, $password, $new_password)
 	{
 		// ToDo;
+	}
+	
+	private function _translation($line, $values = array())
+	{
+		if($count = count($values) > 0)
+		{
+			$line = $this->ci->lang->line($line);
+			for($i = 0; $i < $count; $i++)
+			{
+				$line = str_replace('%'.($i+1), $values[$i], $line);
+			}
+			return $line;
+		}
+		else
+		{
+			return $this->ci->lang->line($line);
+		}
 	}
 }

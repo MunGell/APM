@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+	<div id="registration">
+		{% if error %}
+			<div id="form_error" class="error">{{error}}</div>
+		{% endif %}
+		{% if message %}
+			<div id="form_message" class="message">{{message}}</div>
+		{% endif %}
+		<form action="/user/register" method="post">
+			<input type="hidden" name="{{csrf_variable}}" value="{{csrf_value}}" />
+			<div id="registration_username">Username: <input type="text" name="username" /></div>
+			<div id="registration_email">E-mail: <input type="text" name="email" /></div>
+			<div id="registration_password">Password: <input type="password" name="password" /></div>
+			<div id="registration_password_confirmation">Password again: <input type="password" name="password_confirmation" /></div>
+			<div id="registration_submit"><input type="submit" value="Register" /></div>
+		</form>
+	</div>
+{% endblock %}

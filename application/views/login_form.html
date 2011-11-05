@@ -4,10 +4,13 @@
 		{% if error %}
 			<div id="form_error" class="error">{{error}}</div>
 		{% endif %}
-		<form action="/index.php/user/login" method="post">
+		{% if message %}
+			<div id="form_message" class="message">{{message}}</div>
+		{% endif %}
+		<form action="/user/login" method="post">
 			<input type="hidden" name="{{csrf_variable}}" value="{{csrf_value}}" />
-			<div id="login_login"><input type="text" name="login" /></div>
-			<div id="login_password"><input type="password" name="password" /></div>
+			<div id="login_login">Username: <input type="text" name="username" /></div>
+			<div id="login_password">Password: <input type="password" name="password" /></div>
 			<div id="login_submit"><input type="submit" value="Login" /></div>
 		</form>
 	</div>

@@ -117,4 +117,4 @@ Appendix
 Changes in CodeIgniter Core
 ============================
 
-1. Form_validation, tag <p> removed
+No changes yet
