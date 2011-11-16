@@ -16,7 +16,7 @@ Includes:
 
 MySQL WorkBench Exporter Console
 
-Compiled with:
+Also used:
 --------------
 [Twig-CodeIgniter integration library](https://github.com/bmatschullat/Twig-Codeigniter) (changed)
 
@@ -118,3 +118,12 @@ Changes in CodeIgniter Core
 ============================
 
 No changes yet
+
+ToDo
+====
+
+Add Swift Mailer
+
+Add module system
+
+Add main dashboard

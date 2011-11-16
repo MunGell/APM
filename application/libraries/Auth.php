@@ -61,12 +61,12 @@ class Auth {
 			}
 			else
 			{
-				return $this->_translation('email_already_exists');
+				return translate('email_already_exists');
 			}
 		}
 		else
 		{
-			return $this->_translation('username_already_exists');
+			return translate('username_already_exists');
 		}
 	}
 	
@@ -114,12 +114,12 @@ class Auth {
 			}
 			else
 			{
-				return $this->_translation('activation_needed');
+				return translate('activation_needed');
 			}
 		}
 		else
 		{
-			return $this->_translation('no_user');
+			return translate('no_user');
 		}
 	}
 	
@@ -296,25 +296,5 @@ class Auth {
 	public function resetPassword($user_id, $password, $new_password)
 	{
 		// ToDo;
-	}
-	
-	/**
-	 * Internal translation function
-	 */
-	private function _translation($line, $values = array())
-	{
-		if($count = count($values) > 0)
-		{
-			$line = $this->ci->lang->line($line);
-			for($i = 0; $i < $count; $i++)
-			{
-				$line = str_replace('%'.($i+1), $values[$i], $line);
-			}
-			return $line;
-		}
-		else
-		{
-			return $this->ci->lang->line($line);
-		}
 	}
 }

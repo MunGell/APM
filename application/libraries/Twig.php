@@ -22,7 +22,8 @@ class Twig {
     public function __construct()
     {
         $this->_ci =& get_instance();
-        $this->_ci->config->load(self::TWIG_CONFIG_FILE); // load config file
+		$this->_ci->config->load('config'); 				// load config file
+        $this->_ci->config->load(self::TWIG_CONFIG_FILE); 	// load twig config file
         
         // set include path for twig
         ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . APPPATH . 'third_party/Twig');
@@ -33,13 +34,20 @@ class Twig {
         log_message('debug', 'twig autoloader loaded');
         
         // init paths
-        $this->_template_dir = $this->_ci->config->item('template_dir');
-        $this->_cache_dir = $this->_ci->config->item('cache_dir');
+        $this->_template_dir = $this->_ci->config->item('twig_template_dir');
+        $this->_cache_dir = $this->_ci->config->item('twig_cache_dir');
                 
         // load environment
         $loader = new Twig_Loader_Filesystem($this->_template_dir, $this->_cache_dir);
-        $this->_twig_env = new Twig_Environment($loader);
-        
+        $this->_twig_env = new Twig_Environment($loader, array(
+        	'charset' => $this->_ci->config->item('charset')
+        ));
+
+        // init globals
+		$this->_twig_env->addGlobal('theme', $this->_ci->config->item('twig_style'));
+		$this->_twig_env->addGlobal('static', $this->_ci->config->item('twig_static'));
+		
+		// init functions
         $this->_ciFunctionInit();
     }
 
@@ -72,7 +80,8 @@ class Twig {
     {
     	$this->_twig_env->addFunction('base_url', new Twig_Function_Function('base_url'));
     	$this->_twig_env->addFunction('site_url', new Twig_Function_Function('site_url'));
-    	$this->_twig_env->addFunction('current_url', new Twig_Function_Function('current_url'));    
+    	$this->_twig_env->addFunction('current_url', new Twig_Function_Function('current_url'));
+		$this->_twig_env->addFunction('translate', new Twig_Function_Function('translate'));
         
     	// form functions
     	$this->_twig_env->addFunction('form_open', new Twig_Function_Function('form_open'));
@@ -98,5 +107,12 @@ class Twig {
     	$this->_twig_env->addFunction('set_checkbox', new Twig_Function_Function('set_checkbox'));
     	$this->_twig_env->addFunction('set_radio', new Twig_Function_Function('set_radio'));
     	$this->_twig_env->addFunction('form_open_multipart', new Twig_Function_Function('form_open_multipart'));
+
+		// URL functions
+		$this->_twig_env->addFunction('prep_url', new Twig_Function_Function('prep_url'));
+		$this->_twig_env->addFunction('url_title', new Twig_Function_Function('url_title'));
+		$this->_twig_env->addFunction('auto_link', new Twig_Function_Function('auto_link'));
+		$this->_twig_env->addFunction('safe_mailto', new Twig_Function_Function('safe_mailto'));
+		$this->_twig_env->addFunction('mailto', new Twig_Function_Function('mailto'));
     }
 }

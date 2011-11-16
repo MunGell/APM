@@ -5,27 +5,34 @@
  */
 class Project extends CI_Controller {
 
+	private $mydb;
+	
     public function __construct()
     {
         parent::__construct();
+		if(!$this->auth->isLoggedIn())
+		{
+			redirect('/user/login');
+		}
+		$this->mydb = $this->doctrine->em;
     }
 	
     
     /**
      *
      */
-    public function index($project_id = 0)
+    public function show($project_id = 0)
     {
 		if($project_id == 0)
 		{
 			// Show all projects of the user
+			echo 1;
 		}
 		else
 		{
-			$project = $this->doctrine->em->find('models\Project', $project_id);
+			$project = $this->mydb->find('models\Project', $project_id);
+			echo $project->getProjectTitle();
 		}
-		
-		var_dump($project);
     }
         
     /**

@@ -1,19 +1,25 @@
 {% extends 'base.html' %}
+{% block head %}
+	{{ parent() }}
+	<script type="text/javascript" src="/{{static}}/{{theme}}/js/register_js.js"></script>
+{% endblock %}
 {% block body %}
-	<div id="registration">
+	<div id="registration" class="shadow_5_ccc">
 		{% if error %}
-			<div id="form_error" class="error">{{error}}</div>
+			<div id="form_error" class="error round_corners_5">{{error}}</div>
 		{% endif %}
 		{% if message %}
-			<div id="form_message" class="message">{{message}}</div>
+			<div id="form_message" class="message round_corners_5">{{message}}</div>
 		{% endif %}
 		<form action="/user/register" method="post">
 			<input type="hidden" name="{{csrf_variable}}" value="{{csrf_value}}" />
-			<div id="registration_username">Username: <input type="text" name="username" /></div>
-			<div id="registration_email">E-mail: <input type="text" name="email" /></div>
-			<div id="registration_password">Password: <input type="password" name="password" /></div>
-			<div id="registration_password_confirmation">Password again: <input type="password" name="password_confirmation" /></div>
-			<div id="registration_submit"><input type="submit" value="Register" /></div>
+			<div id="registration_username"><input type="text" name="username" value="{{ translate('username')|capitalize }}" title="{{ translate('username')|capitalize }}" class="round_corners_5" /></div>
+			<div id="registration_email"><input type="text" name="email" value="{{ translate('email')|capitalize }}" title="{{ translate('email')|capitalize }}" class="round_corners_5" /></div>
+			<div id="registration_password"><input type="password" name="password" value="{{ translate('password')|capitalize }}" title="{{ translate('password')|capitalize }}" class="round_corners_5" /></div>
+			<div id="registration_password_confirmation"><input type="password" name="password_confirmation" value="{{ translate('password')|capitalize }}" title="{{ translate('password')|capitalize }}" class="round_corners_5" /></div>
+			<div id="registration_submit" class="left"><input type="submit" value="{{ translate('register')|capitalize }}" class="round_corners_5" /></div>
+			<div id="login_link" class="left"><a href="{{ site_url('user/login') }}">{{ translate('login')|capitalize }}</a></div>
+			<div class="clear"></div>
 		</form>
 	</div>
 {% endblock %}

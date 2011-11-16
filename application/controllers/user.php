@@ -9,7 +9,6 @@ class User extends CI_Controller {
     {
         parent::__construct();
 		$this->load->library('form_validation');
-		$this->load->helper('url');
 		if (!in_array('user_controller_lang.php', $this->lang->is_loaded, TRUE))
 		{
 			$this->lang->load('user_controller');
@@ -51,17 +50,17 @@ class User extends CI_Controller {
 				{
 					// Registration successful
 					echo $this->twig->render('login_form.html', array(
-						'title'			=> $this->_translation('login_title'),
+						'title'			=> translate('login_title'),
 						'csrf_variable' => $this->security->get_csrf_token_name(),
 						'csrf_value'	=> $this->security->get_csrf_hash(),
-						'message'		=> $this->_translation('registered')
+						'message'		=> translate('registered')
 						));
 				}
 				else
 				{
 					// An error occured during registration process
 					echo $this->twig->render('registration_form.html', array(
-						'title'			=> $this->_translation('registration_title'),
+						'title'			=> translate('registration_title'),
 						'csrf_variable' => $this->security->get_csrf_token_name(),
 						'csrf_value'	=> $this->security->get_csrf_hash(),
 						'error'			=> $regStatus
@@ -72,10 +71,10 @@ class User extends CI_Controller {
 			{
 				// An error in form input
 				echo $this->twig->render('registration_form.html', array(
-					'title'			=> $this->_translation('registration_title'),
+					'title'			=> translate('registration_title'),
 					'csrf_variable' => $this->security->get_csrf_token_name(),
 					'csrf_value'	=> $this->security->get_csrf_hash(),
-					'error'			=> validation_errors()
+					'error'			=> validation_errors(' ', ' ')
 					));
 			}
 		}
@@ -83,7 +82,7 @@ class User extends CI_Controller {
 		{
 			// This request should show the registration form
 			echo $this->twig->render('registration_form.html', array(
-				'title'			=> $this->_translation('registration_title'),
+				'title'			=> translate('registration_title'),
 				'csrf_variable' => $this->security->get_csrf_token_name(),
 				'csrf_value'	=> $this->security->get_csrf_hash()
 				));
@@ -95,6 +94,10 @@ class User extends CI_Controller {
      */
     public function delete()
     {
+		if(!$this->auth->isLoggedIn())
+		{
+			redirect('/user/login', 'location');
+		}
 		// ToDo;
 		$this->auth->deleteUser($this->input->post('id'));
 		// Show ondeletion message
@@ -105,6 +108,10 @@ class User extends CI_Controller {
      */
     public function edit()
     {
+		if(!$this->auth->isLoggedIn())
+		{
+			redirect('/user/login', 'location');
+		}
 		//var_dump($this->auth->getAllData());
     }
 
@@ -114,15 +121,11 @@ class User extends CI_Controller {
 	public function login()
 	{
 		// ToDo: create remeber checkbox
-		if($this->auth->isLoggedIn())
-		{
-			redirect('/user', 'location');
-		}
 		if($this->input->post('username'))
 		{
 			// Process the login data
-			$this->form_validation->set_rules('username', $this->_translation('username'), 'trim|required|max_length[50]|xss_clean');
-			$this->form_validation->set_rules('password', $this->_translation('password'), 'required|xss_clean');
+			$this->form_validation->set_rules('username', translate('username'), 'trim|required|max_length[50]|xss_clean');
+			$this->form_validation->set_rules('password', translate('password'), 'required|xss_clean');
 			if ($this->form_validation->run() != false)
 			{
 				$user_name = $this->input->post('username');
@@ -138,7 +141,7 @@ class User extends CI_Controller {
 					{
 						// Show error page
 						echo $this->twig->render('login_form.html', array(
-							'title'			=> $this->_translation('login_title'),
+							'title'			=> translate('login_title'),
 							'csrf_variable' => $this->security->get_csrf_token_name(),
 							'csrf_value'	=> $this->security->get_csrf_hash(),
 							'error'			=> $loginStatus
@@ -150,7 +153,7 @@ class User extends CI_Controller {
 			{
 				// Show an error about incorrect form input
 				echo $this->twig->render('login_form.html', array(
-					'title'			=> $this->_translation('login_title'),
+					'title'			=> translate('login_title'),
 					'csrf_variable' => $this->security->get_csrf_token_name(),
 					'csrf_value'	=> $this->security->get_csrf_hash(),
 					'error'			=> validation_errors(' ',' ')
@@ -161,7 +164,7 @@ class User extends CI_Controller {
 		{
 			// Show the login form
 			echo $this->twig->render('login_form.html', array(
-				'title' => $this->_translation('login_title'),
+				'title' => translate('login_title'),
 				'csrf_variable'	=> $this->security->get_csrf_token_name(),
 				'csrf_value'	=> $this->security->get_csrf_hash()
 				));
@@ -193,25 +196,4 @@ class User extends CI_Controller {
 		// ToDo;
 		// ToDo: deactivate user when email changed
 	}
-	
-	/**
-	 * Internal translation function
-	 */
-	private function _translation($line, $values = array())
-	{
-		if($count = count($values) > 0)
-		{
-			$line = $this->lang->language[$line];
-			for($i = 0; $i < $count; $i++)
-			{
-				$line = str_replace('%'.($i+1), $values[$i], $line);
-			}
-			return $line;
-		}
-		else
-		{
-			return $this->lang->language[$line];
-		}
-	}
-
 }

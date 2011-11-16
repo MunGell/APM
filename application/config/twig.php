@@ -6,5 +6,7 @@
  */
 
  
-$config['template_dir'] = APPPATH.'views';
-$config['cache_dir'] = APPPATH.'cache';
+$config['twig_template_dir'] = APPPATH.'views';
+$config['twig_cache_dir'] = APPPATH.'cache';
+$config['twig_style'] = 'default';
+$config['twig_static'] = 'static';

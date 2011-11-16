@@ -64,7 +64,7 @@ $autoload['libraries'] = array('doctrine', 'twig', 'session', 'auth');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('security');
+$autoload['helper'] = array('security', 'url', 'translation');
 
 
 /*
