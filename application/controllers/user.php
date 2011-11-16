@@ -9,6 +9,7 @@ class User extends CI_Controller {
     {
         parent::__construct();
 		$this->load->library('form_validation');
+		$this->load->helper('avatar');
 		if (!in_array('user_controller_lang.php', $this->lang->is_loaded, TRUE))
 		{
 			$this->lang->load('user_controller');
@@ -25,7 +26,7 @@ class User extends CI_Controller {
 		{
 			redirect('/user/login', 'location');
 		}
-		echo $this->auth->getUsername();
+		echo '<img src="' . avatar($this->auth->getEmail()) . '"/>';
     }
         
     /**

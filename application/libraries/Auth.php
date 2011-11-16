@@ -172,7 +172,25 @@ class Auth {
 		{
 			$id = $this->getUserId();
 			$user = $this->db->find('models\User', $id);
-			return $user->getUsername();
+			return $user->getUserName();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	/**
+	 * Gets current user email
+	 * @return string email
+	 */
+	public function getEmail()
+	{
+		if($this->isLoggedIn())
+		{
+			$id = $this->getUserId();
+			$user = $this->db->find('models\User', $id);
+			return $user->getUserEmail();
 		}
 		else
 		{

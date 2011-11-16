@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------
 
 /**
- * CodeIgniter Translation Helpers
+ * CodeIgniter Avatar Helpers
  *
  * @package		APM
  * @subpackage	Helpers
@@ -21,26 +21,15 @@
  *
  * @access	public
  * @param	string
- * @param	array
- * @return	string
+ * @param	boolean
+ * @return	string url
  */
-if ( ! function_exists('translate'))
+if ( ! function_exists('avatar'))
 {
-	function translate($line, $values = array())
+	function avatar($email, $hash = true)
 	{
 		$CI =& get_instance();
-		if($count = count($values) > 0)
-		{
-			$line = $CI->lang->language[$line];
-			for($i = 0; $i < $count; $i++)
-			{
-				$line = str_replace('%'.($i+1), $values[$i], $line);
-			}
-			return $line;
-		}
-		else
-		{
-			return $CI->lang->language[$line];
-		}
+		$CI->load->library('gravatar');
+		return $CI->gravatar->getAvatar($email, $hash);
 	}
 }
