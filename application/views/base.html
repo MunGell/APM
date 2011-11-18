@@ -2,13 +2,20 @@
 	<head>
 		{% block head %}
 			<meta http-equiv="Content-Type" content="text/html; charset={{_charset}}" />
+			<link rel="stylesheet" href="/{{static}}/{{theme}}/style/screen.css" type="text/css" media="screen, projection">
+			<link rel="stylesheet" href="/{{static}}/{{theme}}/style/print.css" type="text/css" media="print">
+			<!--[if lt IE 8]>
+			  <link rel="stylesheet" href="/{{static}}/{{theme}}/style/ie.css" type="text/css" media="screen, projection">
+			<![endif]-->
 			<link type="text/css" rel="stylesheet" href="/{{static}}/{{theme}}/style/general.css" />
 			<script type="text/javascript" src="/{{static}}/{{theme}}/js/jquery.min.js"></script>
 			<title>{{title}}</title>
 		{% endblock %}
 	</head>
 	<body>
+		<div class="container showgrid">
 		{% block body %}
 		{% endblock %}
+		</div>
 	</body>
 </html>

@@ -3,10 +3,7 @@
  */
 body
 {
-	margin: 0px;
-	padding: 0px;
 	background-color: #efefef;
-	font-family: Arial, Helvetica, sans-serif;
 	color: #333;
 }
 .round_corners_5
@@ -28,40 +25,23 @@ body
   -webkit-box-shadow: 0px 0px 10px #999;
   box-shadow: 0px 0px 10px #999;
 }
-.left
+.full_height
 {
-	float: left;
-}
-.right
-{
-	float: right;
-}
-.clear
-{
-	clear: both;
+	height: 100% !important;
 }
 
 /**
  * Form styles
  */
-#form_error, .error
+.error
 {
-	display: block;
-	width: 94%;
 	background-color: #FBE6F2;
 	border: 1px solid #D893A1;
-	margin: 1% 1% 0 1%;
-	padding: 2%;
-	
 }
-#form_message, .message
+.success
 {
-	display: block;
-	width: 94%;
 	background-color: #66FF99;
 	border: 1px solid #66CC33;
-	margin: 1% 1% 0 1%;
-	padding: 2%;
 }
 
 /**
@@ -72,11 +52,10 @@ body
 	display: block;
 	height: 220px;
 	width: 450px;
-	position: relative;
+	position: absolute;
 	left: 50%;
 	top: 50%;
-	margin-left: -250px;
-	margin-top: -150px;
+	margin: -150px auto auto -250px;
 	padding: 40px 25px;
 	border: 1px solid #999;
 	background-image: url(../images/login_bg.png);
@@ -142,7 +121,7 @@ body
 	display: block;
 	height: 300px;
 	width: 450px;
-	position: relative;
+	position: absolute;
 	left: 50%;
 	top: 50%;
 	margin-left: -250px;
@@ -220,4 +199,23 @@ body
 {
 	border-bottom: 1px dashed #66CCFF;
 	color: #66CCFF;
+}
+
+/**
+ * Dashboard styles
+ */
+#left-side
+{
+	background-color:  #66CCFF;
+}
+#main-side
+{
+	background-color:  #fff;
+	border-right: 1px solid #999;
+	border-left: 1px solid #999;
+	width: 628px;
+}
+#right-side
+{
+	background-color:  #66CCFF;
 }

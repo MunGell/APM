@@ -16,6 +16,8 @@ Includes:
 
 MySQL WorkBench Exporter Console
 
+Gravatar integration
+
 Also used:
 --------------
 [Twig-CodeIgniter integration library](https://github.com/bmatschullat/Twig-Codeigniter) (changed)

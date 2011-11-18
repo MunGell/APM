@@ -109,7 +109,12 @@ class Auth {
 			if($result[0]->getUserActive())
 			{
 				$this->ci->session->set_userdata('user_id', $result[0]->getUserId());
-				$this->ci->input->set_cookie('remember', $remember);
+				$this->ci->input->set_cookie('remember', "".$remember);
+				
+				$user = $this->db->find('models\User', $result[0]->getUserId());
+				$user->setUserLastLogin(new DateTime());
+				$this->db->flush();
+				
 				return true;
 			}
 			else

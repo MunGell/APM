@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block head %}
+	{{ parent() }}
+	<script type="text/javascript" src="/{{static}}/{{theme}}/js/dashboard_js.js"></script>
+{% endblock %}
+{% block body %}
+	<div id="left-side" class="span-7 full_height"></div>
+	<div id="main-side" class="span-16 full_height"></div>
+	<div id="right-side" class="span-7 full_height"></div>
+{% endblock %}

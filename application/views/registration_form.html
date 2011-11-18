@@ -9,7 +9,7 @@
 			<div id="form_error" class="error round_corners_5">{{error}}</div>
 		{% endif %}
 		{% if message %}
-			<div id="form_message" class="message round_corners_5">{{message}}</div>
+			<div id="form_message" class="success round_corners_5">{{message}}</div>
 		{% endif %}
 		<form action="/user/register" method="post">
 			<input type="hidden" name="{{csrf_variable}}" value="{{csrf_value}}" />
