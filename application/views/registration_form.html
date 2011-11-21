@@ -6,19 +6,31 @@
 {% block body %}
 	<div id="registration" class="shadow_5_ccc">
 		{% if error %}
-			<div id="form_error" class="error round_corners_5">{{error}}</div>
+			<div id="form_message" class="alert-message error fade in">{{error}}<a class="close" href="#" onclick="$('.error').alert('close')">×</a></div>
 		{% endif %}
 		{% if message %}
-			<div id="form_message" class="success round_corners_5">{{message}}</div>
+			<div id="form_message" class="alert-message info fade in">{{message}}<a class="close" href="#" onclick="$('.info').alert('close')">×</a></div>
 		{% endif %}
 		<form action="/user/register" method="post">
-			<input type="hidden" name="{{csrf_variable}}" value="{{csrf_value}}" />
-			<div id="registration_username"><input type="text" name="username" value="{{ translate('username')|capitalize }}" title="{{ translate('username')|capitalize }}" class="round_corners_5" /></div>
-			<div id="registration_email"><input type="text" name="email" value="{{ translate('email')|capitalize }}" title="{{ translate('email')|capitalize }}" class="round_corners_5" /></div>
-			<div id="registration_password"><input type="password" name="password" value="{{ translate('password')|capitalize }}" title="{{ translate('password')|capitalize }}" class="round_corners_5" /></div>
-			<div id="registration_password_confirmation"><input type="password" name="password_confirmation" value="{{ translate('password')|capitalize }}" title="{{ translate('password')|capitalize }}" class="round_corners_5" /></div>
-			<div id="registration_submit" class="left"><input type="submit" value="{{ translate('register')|capitalize }}" class="round_corners_5" /></div>
-			<div id="login_link" class="left"><a href="{{ site_url('user/login') }}">{{ translate('login')|capitalize }}</a></div>
+			<input type="hidden" name="{{csrf_variable}}" value="{{csrf_value}}">
+			<div id="registration_username">
+				<input type="text" name="username" value="{{ translate('username')|capitalize }}" title="{{ translate('username')|capitalize }}">
+			</div>
+			<div id="registration_email">
+				<input type="text" name="email" value="{{ translate('email')|capitalize }}" title="{{ translate('email')|capitalize }}">
+			</div>
+			<div id="registration_password">
+				<input type="password" name="password" value="{{ translate('password')|capitalize }}" title="{{ translate('password')|capitalize }}">
+			</div>
+			<div id="registration_password_confirmation">
+				<input type="password" name="password_confirmation" value="{{ translate('password')|capitalize }}" title="{{ translate('password')|capitalize }}">
+			</div>
+			<div id="registration_submit" class="left">
+				<input type="submit" value="{{ translate('register')|capitalize }}" class="btn primary">
+			</div>
+			<div id="registration_login" class="left">
+				<a href="{{ site_url('user/login') }}" class="btn">{{ translate('login')|capitalize }}</a>
+			</div>
 			<div class="clear"></div>
 		</form>
 	</div>

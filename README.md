@@ -18,6 +18,14 @@ MySQL WorkBench Exporter Console
 
 Gravatar integration
 
+Blueprint CSS Framework (Print version)
+
+[Twitter Bootstrap CSS v.1.4](https://github.com/twitter/bootstrap)
+
+[Less v. 1.1.5](http://lesscss.org/)
+
+[HTML IE Support](http://code.google.com/p/html5shim/)
+
 Also used:
 --------------
 [Twig-CodeIgniter integration library](https://github.com/bmatschullat/Twig-Codeigniter) (changed)
@@ -129,3 +137,5 @@ Add Swift Mailer
 Add module system
 
 Add main dashboard
+
+Check form data JS

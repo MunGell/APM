@@ -1,19 +1,36 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		{% block head %}
-			<meta http-equiv="Content-Type" content="text/html; charset={{_charset}}" />
-			<link rel="stylesheet" href="/{{static}}/{{theme}}/style/screen.css" type="text/css" media="screen, projection">
-			<link rel="stylesheet" href="/{{static}}/{{theme}}/style/print.css" type="text/css" media="print">
-			<!--[if lt IE 8]>
-			  <link rel="stylesheet" href="/{{static}}/{{theme}}/style/ie.css" type="text/css" media="screen, projection">
-			<![endif]-->
-			<link type="text/css" rel="stylesheet" href="/{{static}}/{{theme}}/style/general.css" />
-			<script type="text/javascript" src="/{{static}}/{{theme}}/js/jquery.min.js"></script>
 			<title>{{title}}</title>
+			<meta charset="{{_charset}}">
+			
+			<link rel="stylesheet/less" href="/{{static}}/{{theme}}/style/less/bootstrap.less" media="all">
+			<link rel="stylesheet" type="text/css" href="/{{static}}/{{theme}}/style/prettify.css">
+			
+			<!--  HTML5 IE6-8 support of HTML elements -->
+			<!--[if lt IE 9]>
+			      <script src="/{{static}}/{{theme}}/js/html5.js"></script>
+			<![endif]-->
+			
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/jquery.min.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/less.min.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/prettify/prettify.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/bootstrap/bootstrap-alerts.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/bootstrap/bootstrap-buttons.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/bootstrap/bootstrap-dropdown.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/bootstrap/bootstrap-modal.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/bootstrap/bootstrap-tabs.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/bootstrap/bootstrap-twipsy.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/bootstrap/bootstrap-popover.js"></script>
+			<script type="text/javascript" src="/{{static}}/{{theme}}/js/bootstrap/bootstrap-scrollspy.js"></script>
+			<script>$(document).ready(function(){prettyPrint()})</script>
+			
+			<link rel="stylesheet" type="text/css" href="/{{static}}/{{theme}}/style/general.css">
 		{% endblock %}
 	</head>
 	<body>
-		<div class="container showgrid">
+		<div class="container">
 		{% block body %}
 		{% endblock %}
 		</div>

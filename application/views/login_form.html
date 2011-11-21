@@ -4,19 +4,27 @@
 	<script type="text/javascript" src="/{{static}}/{{theme}}/js/login_js.js"></script>
 {% endblock %}
 {% block body %}
-	<div id="login" class="shadow_5_ccc">
+	<div id="login" class="shadow10">
 		{% if error %}
-			<div id="form_error" class="error round_corners_5">{{error}}</div>
+			<div id="form_message" class="alert-message error fade in">{{error}}<a class="close" href="#" onclick="$('.error').alert('close')">×</a></div>
 		{% endif %}
 		{% if message %}
-			<div id="form_message" class="success round_corners_5">{{message}}</div>
+			<div id="form_message" class="alert-message info fade in">{{message}}<a class="close" href="#" onclick="$('.info').alert('close')">×</a></div>
 		{% endif %}
 		<form action="/user/login" method="post">
-			<input type="hidden" name="{{csrf_variable}}" value="{{csrf_value}}" />
-			<div id="login_login"><input type="text" name="username" value="{{ translate('username')|capitalize }}" title="{{ translate('username')|capitalize }}" class="round_corners_5" /></div>
-			<div id="login_password"><input type="password" name="password" value="{{ translate('password')|capitalize }}" title="{{ translate('password')|capitalize }}" class="round_corners_5" /></div>
-			<div id="login_submit" class="left"><input type="submit" value="{{ translate('login')|capitalize }}" class="round_corners_5" /></div>
-			<div id="register_link" class="left"><a href="{{ site_url('user/register') }}">{{ translate('registration')|capitalize }}</a></div>
+			<input type="hidden" name="{{csrf_variable}}" value="{{csrf_value}}">
+			<div id="login_login">
+				<input type="text" name="username" value="{{ translate('username')|capitalize }}" title="{{ translate('username')|capitalize }}">
+			</div>
+			<div id="login_password">
+				<input type="password" name="password" value="{{ translate('password')|capitalize }}" title="{{ translate('password')|capitalize }}">
+			</div>
+			<div id="login_submit" class="left">
+				<input type="submit" value="{{ translate('login')|capitalize }}" class="btn primary">
+			</div>
+			<div id="login_register" class="left">
+				<a href="{{ site_url('user/register') }}" class="btn">{{ translate('registration')|capitalize }}</a>
+			</div>
 			<div class="clear"></div>
 		</form>
 	</div>

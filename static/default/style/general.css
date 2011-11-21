@@ -1,31 +1,45 @@
 /**
  * General styles
  */
+html, body
+{
+	height: 100% !important;
+}
+body > div.container > div.row
+{
+	height: 100% !important;
+}
 body
 {
-	background-color: #efefef;
+	background-color: #B2BFCA;
 	color: #333;
+	background-image: linear-gradient(bottom, rgb(178,191,202) 21%, rgb(221,228,234) 65%);
+	background-image: -o-linear-gradient(bottom, rgb(178,191,202) 21%, rgb(221,228,234) 65%);
+	background-image: -moz-linear-gradient(bottom, rgb(178,191,202) 21%, rgb(221,228,234) 65%);
+	background-image: -webkit-linear-gradient(bottom, rgb(178,191,202) 21%, rgb(221,228,234) 65%);
+	background-image: -ms-linear-gradient(bottom, rgb(178,191,202) 21%, rgb(221,228,234) 65%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.21, rgb(178,191,202)),
+		color-stop(0.65, rgb(221,228,234))
+	);
 }
-.round_corners_5
+.left
 {
-	-webkit-border-radius: 5px;
-	-khtml-border-radius: 5px;	
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	float: left;
 }
-.round_corners_10
+.right
 {
-	-webkit-border-radius: 10px;
-	-khtml-border-radius: 10px;	
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	float: right;
 }
-.shadow_5_ccc {
-  -moz-box-shadow: 0px 0px 10px #999;
-  -webkit-box-shadow: 0px 0px 10px #999;
-  box-shadow: 0px 0px 10px #999;
+.container
+{
+	height: 100% !important;
+	background-color: #fff;
 }
-.full_height
+.fill
 {
 	height: 100% !important;
 }
@@ -33,15 +47,9 @@ body
 /**
  * Form styles
  */
-.error
+#form_message
 {
-	background-color: #FBE6F2;
-	border: 1px solid #D893A1;
-}
-.success
-{
-	background-color: #66FF99;
-	border: 1px solid #66CC33;
+	width: 93%;
 }
 
 /**
@@ -64,53 +72,34 @@ body
 #login form
 {
 	position: relative;
-	top: 40px;
+	top: 50px;
 	width: 250px;
 	margin: 10px 100px;
 }
 #login_login input
 {
-	font-size: 18px;
+	font-size: 120%;
 	margin-bottom: 8px;
+	letter-spacing: 1px;
 	color: #ccc;
 	padding: 5px;
 	width: 238px;
-	border: 1px solid #ccc;
 }
 #login_password input
 {
-	font-size: 18px;
+	font-size: 120%;
 	margin-bottom: 10px;
+	letter-spacing: 1px;
 	color: #ccc;
 	padding: 5px;
 	width: 238px;
-	border: 1px solid #ccc;
 }
 #login_submit input
 {
-	font-size: 16px;
-	color: #fff;
-	border: 1px solid #0099FF;
-	background-color:  #66CCFF;
-	padding: 5px;
-	margin: 0 15px 0 15px;
-	width: 100px;
+	margin: auto 10px auto 40px;
 }
-#register_link
+#login_register a
 {
-	padding-top: 5px;
-}
-#register_link a
-{
-	text-decoration: none;
-	border-bottom: 1px dashed #fff;
-	font-size: 16px;
-	color: #fff;
-}
-#register_link a:hover
-{
-	border-bottom: 1px dashed #66CCFF;
-	color: #66CCFF;
 }
 
 /**
@@ -140,82 +129,56 @@ body
 }
 #registration_username input
 {
-	font-size: 18px;
+	font-size: 120%;
 	margin-bottom: 8px;
+	letter-spacing: 1px;
 	color: #ccc;
 	padding: 5px;
 	width: 238px;
-	border: 1px solid #ccc;
 }
 #registration_email input
 {
-	font-size: 18px;
+	font-size: 120%;
 	margin-bottom: 8px;
+	letter-spacing: 1px;
 	color: #ccc;
 	padding: 5px;
 	width: 238px;
-	border: 1px solid #ccc;
 }
 #registration_password input
 {
-	font-size: 18px;
+	font-size: 120%;
 	margin-bottom: 8px;
+	letter-spacing: 1px;
 	color: #ccc;
 	padding: 5px;
 	width: 238px;
-	border: 1px solid #ccc;
 }
 #registration_password_confirmation input
 {
-	font-size: 18px;
+	font-size: 120%;
 	margin-bottom: 10px;
+	letter-spacing: 1px;
 	color: #ccc;
 	padding: 5px;
 	width: 238px;
-	border: 1px solid #ccc;
 }
 #registration_submit input
 {
-	font-size: 16px;
-	color: #fff;
-	border: 1px solid #0099FF;
-	background-color:  #66CCFF;
-	padding: 5px;
-	margin: 0 15px 0 40px;
-	width: 100px;
+	margin: auto 10px auto 50px;
 }
-#login_link
+#registration_login a
 {
-	padding-top: 5px;
 }
-#login_link a
-{
-	text-decoration: none;
-	border-bottom: 1px dashed #fff;
-	font-size: 16px;
-	color: #fff;
-}
-#login_link a:hover
-{
-	border-bottom: 1px dashed #66CCFF;
-	color: #66CCFF;
-}
-
 /**
  * Dashboard styles
  */
-#left-side
+.sides
 {
-	background-color:  #66CCFF;
+	display: block;
+	height: 100% !important;
 }
-#main-side
+#main-top-menu
 {
-	background-color:  #fff;
-	border-right: 1px solid #999;
-	border-left: 1px solid #999;
-	width: 628px;
-}
-#right-side
-{
-	background-color:  #66CCFF;
+	margin: 1%;
 }

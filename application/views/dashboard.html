@@ -4,7 +4,28 @@
 	<script type="text/javascript" src="/{{static}}/{{theme}}/js/dashboard_js.js"></script>
 {% endblock %}
 {% block body %}
-	<div id="left-side" class="span-7 full_height"></div>
-	<div id="main-side" class="span-16 full_height"></div>
-	<div id="right-side" class="span-7 full_height"></div>
+	<div class="row">
+		<div id="left-side" class="span4 sides">
+		</div>
+		<div id="main-side" class="span8 sides shadow10">
+			<div id="main-top-menu">
+				<ul class="tabs">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Messages</a></li>
+					<li><a href="#">Settings</a></li>
+					<li class="dropdown" data-dropdown="dropdown"><a href="#" class="dropdown-toggle">Contact</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Profile</a></li>
+							<li><a href="#">Messages</a></li>
+							<li><a href="#">Settings</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="right-side" class="span4 sides">
+		</div>
+	</div>
 {% endblock %}
